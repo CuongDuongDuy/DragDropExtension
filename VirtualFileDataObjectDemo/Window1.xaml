@@ -1,0 +1,72 @@
+﻿<Window x:Class="VirtualFileDataObjectDemo.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="VirtualFileDataObjectDemo"
+    Height="400"
+    Width="400">
+    <Grid>
+
+        <UniformGrid
+            Rows="5"
+            Background="#ffdddddd"
+            TextElement.FontSize="22"
+            TextElement.FontWeight="Bold">
+
+            <UniformGrid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Background" Value="Orange"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </UniformGrid.Resources>
+
+            <ContentControl
+                Content="Drag an item or right-click to copy it:"
+                FontSize="18"
+                VerticalAlignment="Center"
+                Margin="20"/>
+            <Label
+                x:Name="Text"
+                Content="Text only"/>
+            <Label
+                x:Name="TextUrl"
+                Content="Text and URL"/>
+            <Label
+                x:Name="VirtualFile">
+                <DockPanel>
+                    <ContentControl
+                        Content="Virtual file"
+                        DockPanel.Dock="Left"
+                        VerticalAlignment="Center"/>
+                    <ContentControl
+                        Content="[Drag moves; paste cuts]"
+                        FontSize="14"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"/>
+                </DockPanel>
+            </Label>
+            <Label
+                x:Name="TextUrlVirtualFile"
+                Content="Text, URL, and a virtual file!"/>
+        </UniformGrid>
+
+        <Grid
+            x:Name="BusyScreen"
+            Background="LightGray"
+            Visibility="Collapsed">
+            <StackPanel
+                VerticalAlignment="Center"
+                Margin="50">
+                <Viewbox>
+                    <TextBlock Text="Busy..."/>
+                </Viewbox>
+                <ProgressBar IsIndeterminate="True" Height="20"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
